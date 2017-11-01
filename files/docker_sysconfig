@@ -1,0 +1,13 @@
+# /etc/sysconfig/docker
+
+# Modify these options if you want to change the way the docker daemon runs
+#OPTIONS='--selinux-enabled -H tcp://0.0.0.0:2375 -H unix:///var/run/docker.sock'
+
+#OPTIONS='--selinux-enabled --log-driver=journald'
+
+OPTIONS='--selinux-enabled --log-driver=journald --iptables=false'
+DOCKER_CERT_PATH=/etc/docker
+
+INSECURE_REGISTRY="--insecure-registry bj.docker.co:500000  --insecure-registry hub.docker.co"
+
+

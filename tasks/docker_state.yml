@@ -1,0 +1,21 @@
+---
+
+- hosts: '{{ hosts }}'
+  remote_user: volotus
+  become: yes
+  tasks:
+  - name: Start Docker service
+    service: name=docker state=started
+    tags: start
+
+  - name: Stop Docker service
+    service: name=docker state=stopped
+    tags: stop
+
+  - name: Restart Docker service
+    service: name=docker state=restarted
+    tags: restart
+
+  - name: Reload Docker service
+    service: name=docker state=reloaded
+    tags: reload

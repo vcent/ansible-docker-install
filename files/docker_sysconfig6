@@ -1,0 +1,9 @@
+# /etc/sysconfig/docker
+#
+# Other arguments to pass to the docker daemon process
+# These will be parsed by the sysv initscript and appended
+# to the arguments list passed to docker -d
+
+other_args="--insecure-registry bw.docker.co:5000  --insecure-registry hub.docker.co  --iptables=false"
+
+ulimit -HSn 1024000

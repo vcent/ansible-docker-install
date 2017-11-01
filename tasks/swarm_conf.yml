@@ -1,0 +1,5 @@
+- name: run private_ip_address module to get customized facts
+  ansible_private_ipv4_address: get_facts=yes
+
+- name: for docker swarm conf
+  template: src={{ swarm_conf }} dest=/etc/sysconfig/docker owner=root group=root mode=0644

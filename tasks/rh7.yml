@@ -1,0 +1,20 @@
+- name: "Copy docker repo"
+  copy: src=docker.repo dest=/etc/yum.repos.d/docker.repo owner=root group=root
+
+- name: "Install docker engine"
+  yum: name=docker-engine  state=present
+
+- name: "enble docker engine"
+  shell: systemctl enable docker
+
+- name: Copy docker sysconfig
+  copy: src=docker_sysconfig  dest=/etc/sysconfig/docker owner=root group=root
+
+- name: make systemd drop-in directory
+  file: path=/etc/systemd/system/docker.service.d state=directory owner=root group=root
+
+- name: copy service conf for docker-engine service compatibility with docker
+  copy: src=service.conf dest=/etc/systemd/system/docker.service.d/ owner=root group=root
+
+- name: systemctl daemon reload
+  shell: systemctl daemon-reload

@@ -1,0 +1,4 @@
+
+- name: Copy docker sysconfig
+  copy: src=docker_sysconfig  dest=/etc/sysconfig/docker owner=root group=root
+

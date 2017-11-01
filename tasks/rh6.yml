@@ -1,0 +1,15 @@
+
+- name: "epel"
+  yum: name=http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm state=present
+
+- name: "Update the docker dependencies"
+  yum: name={{ item }}  state=latest
+  with_items:
+    - device-mapper
+
+- name: "Install docker"
+  yum: name=docker-io enablerepo=epel state=present
+
+- name: Copy docker sysconfig
+  copy: src=docker_sysconfig6  dest=/etc/sysconfig/docker owner=root group=root
+
